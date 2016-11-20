@@ -138,7 +138,7 @@ begin
           specs = Dir.glob(spec_search)
           spec_groups = specs.each_slice((specs.size / 2).round).to_a
           Parallel.each(spec_groups, :in_processes => CONCURRENT_TESTS) do |proccess_specs|
-            cmd = "bin/rspec #{proccess_specs.join(" ")} --format progress --color"
+            cmd = "bin/rspec -- #{proccess_specs.join(" ")} --format progress --color"
             open("|#{cmd}", "r") do |output|
               begin
                 loop do
