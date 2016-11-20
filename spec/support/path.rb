@@ -8,6 +8,7 @@ module Spec
     end
 
     def prefix
+      return "base" unless defined?(RSpec)
       prefix = ENV.fetch("RSPEC_BUNDLER_PATH_PREFIX") do
         if example = RSpec.current_example
           example.location.sub(%r{^\./}, "").gsub(File::SEPARATOR, "__").gsub(":", "__")
