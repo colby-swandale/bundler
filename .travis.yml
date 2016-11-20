@@ -1,16 +1,9 @@
 language: ruby
-script: rake spec:travis
+script: rake spec:rubygems:master
 before_script:
   - travis_retry rake spec:travis:deps
-  - travis_retry rake man:build
 sudo: required
 rvm:
   - 2.3.1
 env:
   - RGV=master
-  - RGV=v2.6.6
-
-matrix:
-  include:
-    - rvm: 2.2
-      env: RGV=v2.5.2
